@@ -1,8 +1,4 @@
 #!/usr/bin/env node
-const args = process.argv.slice(2);
+import { Cli } from "./core/Cli";
 
-main();
-
-function main(): void {
-    console.log(args);
-}
+new Cli().run();

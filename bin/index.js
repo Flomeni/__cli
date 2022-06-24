@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 "use strict";
-const args = process.argv.slice(2);
-main();
-function main() {
-    console.log(args);
-}
-//# sourceMappingURL=index.js.map
+Object.defineProperty(exports, "__esModule", { value: true });
+const Cli_1 = require("./core/Cli");
+new Cli_1.Cli().run();

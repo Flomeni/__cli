@@ -1,7 +1,7 @@
 {
-  "name": "basic_cli",
+  "name": "__cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "The basic cli for routine tasks",
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "base-cli": "./bin/index.js"
+    "__cli": "./bin/index.js"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
