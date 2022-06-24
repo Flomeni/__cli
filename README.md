@@ -8,11 +8,10 @@
 
 ## Installation
 
-    ### cd path/to/root
-    ### npm run install
-    ### reload terminal, if doesnt work - reboot pc
+    1) cd path/to/root
+    2) npm run install
+    3) reload terminal, if it didnt work - reboot pc
 
 ## Usage
 
-    base-cli <command>
-    
+    TBD
