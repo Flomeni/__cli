@@ -1,22 +1,24 @@
 {
-  "name": "__cli",
+  "name": "Nodejs Boilerplate CLI",
   "version": "1.0.0",
-  "description": "The basic cli for routine tasks",
+  "description": "Tool that helps making app peaces creation process faster",
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
-    "dev": "node ./bin/index.js",
+    "dev": "nodemon ./bin/index.js",
+    "dev2": "node ./bin/index.js generate component",
     "install-pckg": "npm i -g .",
     "install-deps": "npm i",
-    "install": "npm run install-pckg && npm run install-deps"
+    "install": "tsc && npm run install-deps && npm run install-pckg"
   },
   "author": "",
   "license": "ISC",
   "bin": {
-    "__cli": "./bin/index.js"
+    "nbp": "./bin/index.js"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "nodemon": "^2.0.18",
     "typescript": "^4.7.4"
   }
 }
