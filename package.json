@@ -1,7 +1,7 @@
 {
   "name": "Nodejs Boilerplate CLI",
   "version": "1.0.0",
-  "description": "Tool that helps making app peaces creation process faster",
+  "description": "Tool that gonna make your development faster",
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
