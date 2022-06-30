@@ -1,0 +1,12 @@
+{
+    "args": [
+        {
+            "desc": "Interactive mode for the cli",
+            "name": "Interactive",
+            "alias": [
+                "interactive", "-interactive", "--interactive", "int", "-int", "--int", "i", "-i", "--i" 
+            ],
+            "value": 0
+        }
+    ]
+}

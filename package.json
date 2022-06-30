@@ -1,20 +1,20 @@
 {
-  "name": "Nodejs Boilerplate CLI",
-  "version": "1.0.0",
-  "description": "Tool that gonna make your development faster",
+  "name": "nodebp",
+  "version": "0.0.1",
+  "description": "Nodejs Boilerplate CLI",
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
     "dev": "nodemon ./bin/index.js",
     "dev2": "node ./bin/index.js generate component",
-    "install-pckg": "npm i -g .",
-    "install-deps": "npm i",
-    "install": "tsc && npm run install-deps && npm run install-pckg"
+    "install:cli": "npm i -g .",
+    "install:deps": "npm i",
+    "install:project": "npm run install:deps && tsc && npm run install:cli"
   },
-  "author": "",
+  "author": "Maksym Mezko",
   "license": "ISC",
   "bin": {
-    "nbp": "./bin/index.js"
+    "nodebp": "./bin/index.js"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

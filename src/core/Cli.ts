@@ -1,7 +1,6 @@
 import { CliMessageFactory } from '../utils/CliMessageFactory';
 import { Parser } from './Parser';
-import { Prompt } from './Prompt/Prompt';
-import { ReadlinePromptAdapter } from './Prompt/ReadlinePromptAdapter';
+import { Prompt, ReadlinePromptAdapter } from './prompt';
 
 export class Cli {
     private readonly massageFactory: CliMessageFactory = new CliMessageFactory();
@@ -12,11 +11,16 @@ export class Cli {
         if (!argv?.length) {
             return void this.massageFactory.showHelloMessageIfNoArgs();
         }
-        /* 
-            1. Parse args into Tree
-            2. Analyze whether we have a proper args in the dynamic args schemas
+        /*
+            1. Parse args into Tree with Parser
+            2. Analyze whether we have a proper args set to fetch proper config using Analyzer
+            3. If we dont have proper schema, but user input values, that are close to the accetpable args set,
+             show its array
+             4. If we dont have proper schema and args are out of the tree, return list of schemas to use
+             5. If we have correct schema, fetch it.
+             6. Invoke schema's executor file with Generator  (show how would it looked like in virtual system)
         */
-        this.prompt
+        /* this.prompt
         .query('What Schema would you like to use \n', (schema: string) => {
             // todo: find searched shema
             const schemas: any[] = [];
@@ -27,8 +31,7 @@ export class Cli {
                 this.prompt.query('next question', undefined, Prompt.Options.NoAbortClose);
             }
             // what needs to be prompted if no schema for provided name were found
-        }, Prompt.Options.NoAbortNoClose);
-
-        console.log('argv: ', argv);
+        }, Prompt.Options.NoAbortNoClose); */
+        this.parser.parse(argv);
     }
 }
