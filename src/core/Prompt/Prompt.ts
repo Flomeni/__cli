@@ -7,11 +7,11 @@ export class Prompt {
         NoAbortClose: IPromptAdapterOptions;
     } = {
         NoAbortNoClose: {
-            abortale: false,
+            abortable: false,
             closeAfterQuery: false,
         },
         NoAbortClose: {
-            abortale: false,
+            abortable: false,
             closeAfterQuery: true,
         },
     };
@@ -23,13 +23,13 @@ export class Prompt {
     query(
         query: string,
         callback: (answer: string) => void = noopFn,
-        {abortale, closeAfterQuery}: IPromptAdapterOptions,
+        {abortable, closeAfterQuery}: IPromptAdapterOptions,
     ): void {
         this.adapter.query(
             query,
             callback,
             {
-                abortale,
+                abortable,
                 closeAfterQuery: closeAfterQuery ?? !Boolean(callback)
             },
         );

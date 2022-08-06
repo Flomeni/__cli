@@ -11,7 +11,7 @@ export interface IPromptAdapter {
 }
 
 export interface IPromptAdapterOptions {
-    abortale: boolean;
+    abortable: boolean;
     closeAfterQuery: boolean;
 }
 

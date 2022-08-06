@@ -1,11 +1,13 @@
 import { CliMessageFactory } from '../utils/CliMessageFactory';
-import { Parser } from './Parser';
+import Parser from './parser/Parser';
 import { Prompt, ReadlinePromptAdapter } from './prompt';
 
 export class Cli {
     private readonly massageFactory: CliMessageFactory = new CliMessageFactory();
     private readonly prompt: Prompt = new Prompt(new ReadlinePromptAdapter());
     private readonly parser: Parser = new Parser();
+
+    private interactive = false;
 
     public run(argv: string[]): void {
         if (!argv?.length) {
@@ -33,5 +35,7 @@ export class Cli {
             // what needs to be prompted if no schema for provided name were found
         }, Prompt.Options.NoAbortNoClose); */
         this.parser.parse(argv);
+
+        // if parser returns tree with --interactive, activate it:
     }
 }

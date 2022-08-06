@@ -1,12 +1,32 @@
 {
     "args": [
         {
+            "__id": "Interactive",
             "desc": "Interactive mode for the cli",
             "name": "Interactive",
             "alias": [
-                "interactive", "-interactive", "--interactive", "int", "-int", "--int", "i", "-i", "--i" 
+                "-interactive", "--interactive", "-int", "--int", "-i", "--i" 
             ],
             "value": 0
+        },
+        {
+            "__id": "Schema",
+            "desc": "Name of a schema",
+            "name": "Schema",
+            "alias": [
+                "-s", "--s", "---s", "-schema", "--schema"
+            ]
+        },
+        {
+            "__id": "ExecutorArg",
+            "desc": "Service arguments for a schema's executor",
+            "name": "ExecutorArg",
+            "alias": [
+                "::", ":", ":::"
+            ],
+            "parents": [
+                "Schema"
+            ]
         }
     ]
 }
