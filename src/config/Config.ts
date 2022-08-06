@@ -1,26 +1,34 @@
-{
+import { IStaticConfig } from "./IStaticConfig.models";
+
+export enum ConfigName {
+    Interactive = 'Interactive',
+    Schema = 'Schema',
+    ExecutorArg = 'ExecutorArg',
+}
+
+export const Config: IStaticConfig = {
     "args": [
         {
-            "__id": "Interactive",
+            "__id": ConfigName.Interactive,
             "desc": "Interactive mode for the cli",
-            "name": "Interactive",
+            "name": ConfigName.Interactive,
             "alias": [
                 "-interactive", "--interactive", "-int", "--int", "-i", "--i" 
             ],
             "value": 0
         },
         {
-            "__id": "Schema",
+            "__id": ConfigName.Schema,
             "desc": "Name of a schema",
-            "name": "Schema",
+            "name": ConfigName.Schema,
             "alias": [
                 "-s", "--s", "---s", "-schema", "--schema"
             ]
         },
         {
-            "__id": "ExecutorArg",
+            "__id": ConfigName.ExecutorArg,
             "desc": "Service arguments for a schema's executor",
-            "name": "ExecutorArg",
+            "name": ConfigName.ExecutorArg,
             "alias": [
                 "::", ":", ":::"
             ],
@@ -29,4 +37,4 @@
             ]
         }
     ]
-}
+};

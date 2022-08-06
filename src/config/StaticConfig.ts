@@ -1,14 +1,13 @@
-import { IStaticConfigJSON, IStaticConfigArg, IStaticConfigArgumentsLookup, IStaticConfigArgNameAliasesLookup } from 'src/config/IStaticConfig.models';
-import json from './config.json';
+import * as StaticConfigs from 'src/config/IStaticConfig.models';
+import { Config, ConfigName } from './Config';
 
 export class StaticConfig {
-    public static readonly configArgumentsLookup: IStaticConfigArgumentsLookup = new Map();
-    public static readonly argNameAliasesLookup: IStaticConfigArgNameAliasesLookup = new Map();
-    public static readonly configJSON: IStaticConfigJSON = { ...json } as any;
+    public static readonly configArgumentsLookup: StaticConfigs.IStaticConfigArgumentsLookup = new Map();
+    public static readonly argNameAliasesLookup: StaticConfigs.IStaticConfigArgNameAliasesLookup = new Map();
+    public static readonly config: StaticConfigs.IStaticConfig = { ...Config } as any;
 
     constructor() {
-        const json_m = { ...json } as any;
-        this.createArgumentAndArgNameAliaseLookups(json_m);
+        this.createArgumentAndArgNameAliaseLookups(Config);
     }
 
     public getArgValue(argName: string): boolean {
@@ -19,7 +18,7 @@ export class StaticConfig {
         return StaticConfig.configArgumentsLookup.has(argName);
     }
 
-    public findArgByName(argName: string): IStaticConfigArg {
+    public findArgByName(argName: string): StaticConfigs.IStaticConfigArg {
         const argFound = StaticConfig.configArgumentsLookup.get(argName.toLocaleLowerCase());
         if (!argFound) {
             throw new Error(`[FindArgument Error] Argument ${argName} doesnt exist.`);
@@ -28,14 +27,21 @@ export class StaticConfig {
         return argFound;
     }
 
-    public isSchemaArg(argName: string): boolean {
-        return !!StaticConfig.configJSON.args.find((arg: IStaticConfigArg) => {
-            return arg.alias.includes(argName.toLowerCase());
-        });
+    public isSchemaAlias(argName: string): boolean {
+        return this.isAlias(argName, ConfigName.Schema);
+    }
+        
+    public isInteractive(): boolean {
+        return this.getArgValue(ConfigName.Interactive);
     }
 
-    private createArgumentAndArgNameAliaseLookups(config: IStaticConfigJSON): void {
-        config.args.forEach((arg: IStaticConfigArg) => {
+    private isAlias(aliasCandidate: string, argName: ConfigName): boolean {
+        const argAliases = StaticConfig.argNameAliasesLookup.get(argName);
+        return !!argAliases && argAliases.has(aliasCandidate.toLowerCase());
+    }
+
+    private createArgumentAndArgNameAliaseLookups(config: StaticConfigs.IStaticConfig): void {
+        config.args.forEach((arg: StaticConfigs.IStaticConfigArg) => {
             StaticConfig.configArgumentsLookup.set(arg.name.toLocaleLowerCase(), arg);
             StaticConfig.argNameAliasesLookup.set(arg.name.toLocaleLowerCase(), new Set(arg.alias));
         });

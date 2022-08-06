@@ -1,20 +1,17 @@
 import { InteractiveParser } from './InteractiveParser';
-import { IStaticConfig, IStaticConfigArg } from '../../config/IStaticConfig.models';
+import { IInteractiveParser } from './IInteractiveParser';
+import { StaticConfig } from '../../config/StaticConfig';
               
 export default class Parser {
-    private readonly config: IStaticConfig;
+    private readonly config: StaticConfig = new StaticConfig();
     private readonly interactiveModule: IInteractiveParser = new InteractiveParser();
-    private readonly configArgumentsLookup: Map<string, IStaticConfigArg>;
 
-    constructor() {
-        this.config = { ...json } as any;
-        this.configArgumentsLookup = this.createArgumentsLookup(this.config);
-    }
+    constructor() {}
 
     public parse(args: string[]): any {
         console.log('Parser::parse.args: ', args);
         // todo: add possibility to read interactive from args list
-        if (this.isInteractive()) {
+        if (this.config.isInteractive()) {
             return this.interactiveModule.parse(args);
         }
 
@@ -25,9 +22,5 @@ export default class Parser {
         do {
             
         } while (getNextArg());
-    }
-
-    private isInteractive(): boolean {
-        return this.getStaticArgValue(this.config, 'interactive')
     }
 }

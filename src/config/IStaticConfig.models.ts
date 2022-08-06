@@ -2,12 +2,12 @@ export interface IStaticConfigArg {
     __id: string;
     desc: string;
     name: string;
-    alias: string[];
-    value: number;
-    parents: IStaticConfigArg['__id'][];
+    alias?: string[];
+    value?: number;
+    parents?: IStaticConfigArg['__id'][];
 }
 
-export interface IStaticConfigJSON {
+export interface IStaticConfig {
     args: IStaticConfigArg[];
 }
 
