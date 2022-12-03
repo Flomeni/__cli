@@ -5,15 +5,24 @@ export class StaticConfig {
     public static readonly configArgumentsLookup: StaticConfigs.IStaticConfigArgumentsLookup = new Map();
     public static readonly argNameAliasesLookup: StaticConfigs.IStaticConfigArgNameAliasesLookup = new Map();
     public static readonly config: StaticConfigs.IStaticConfig = { ...Config } as any;
+    public readonly supportedArgs = new Set();
 
     constructor() {
         this.createArgumentAndArgNameAliaseLookups(Config);
     }
 
+    public isCLIArgument(candidate: string): boolean {
+        return this.hasArgument(candidate);
+    }
+
+    public isCLIArgumentsValue(candidate: string): boolean {
+        return this.isCLIArgument(candidate);
+    }
+
     public getArgValue(argName: string): boolean {
         return Boolean(this.findArgByName(argName).value);
     }
-    
+
     public hasArgument(argName: string): boolean {
         return StaticConfig.configArgumentsLookup.has(argName);
     }
@@ -28,16 +37,16 @@ export class StaticConfig {
     }
 
     public isSchemaAlias(argName: string): boolean {
-        return this.isAlias(argName, ConfigName.Schema);
+        return this.isAliasToArg(argName, ConfigName.Schema);
     }
-        
+
     public isInteractive(): boolean {
         return this.getArgValue(ConfigName.Interactive);
     }
 
-    private isAlias(aliasCandidate: string, argName: ConfigName): boolean {
-        const argAliases = StaticConfig.argNameAliasesLookup.get(argName);
-        return !!argAliases && argAliases.has(aliasCandidate.toLowerCase());
+    private isAliasToArg(candidate: string, arg: ConfigName): boolean {
+        const argAliases = StaticConfig.argNameAliasesLookup.get(arg);
+        return !!argAliases && argAliases.has(candidate.toLowerCase());
     }
 
     private createArgumentAndArgNameAliaseLookups(config: StaticConfigs.IStaticConfig): void {

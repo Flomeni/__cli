@@ -1,7 +1,7 @@
-import { SchemaDefClass, SchemaDefClassArgEntry } from "src/schemas/models/ISchemaDef";
+import { SchemaFactory, SchemaFactoryArgEntry } from "src/schemas/models/ISchemaFactory";
 
 export interface IParsedSchema {
     name: string;
-    def: SchemaDefClass;
-    args: SchemaDefClassArgEntry[];
+    factory: SchemaFactory;
+    args: SchemaFactoryArgEntry[];
 }

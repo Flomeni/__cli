@@ -16,11 +16,22 @@ export default class Parser {
         }
 
         let pointer = 0;
-        const getCurrentArg = () => args[pointer];
-        const getNextArg = () => args[pointer++];
+        const argsArray = args.slice();
+        const getCurrentArg = () => argsArray[pointer];
+        const getNextArg = () => argsArray[pointer++];
 
+        const argsTuple: string[][] = [];
         do {
-            
+            const isCliArg = this.config.isCLIArgument(getCurrentArg());
+            const tuple = [];
+
+            if (isCliArg) {
+                tuple.push(getCurrentArg(), getNextArg());
+            }
+
+            argsTuple.push(tuple);
         } while (getNextArg());
+
+        console.log(argsTuple);
     }
 }

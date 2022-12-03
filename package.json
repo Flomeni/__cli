@@ -1,12 +1,12 @@
 {
-  "name": "nodebp",
+  "name": "nbp",
   "version": "0.0.1",
   "description": "Nodejs Boilerplate CLI",
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
     "dev": "nodemon ./bin/index.js",
-    "dev2": "node ./bin/index.js generate component",
+    "dev:args": "node ./bin/index.js generate component",
     "install:cli": "npm i -g .",
     "install:deps": "npm i",
     "install:project": "npm run install:deps && tsc && npm run install:cli"
@@ -14,7 +14,7 @@
   "author": "Maksym Mezko",
   "license": "ISC",
   "bin": {
-    "nodebp": "./bin/index.js"
+    "nbp": "./bin/index.js"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

@@ -11,7 +11,7 @@
 
 ###      Parameters:
 
-```::<schema_custom_param>``` - special syntax created by developer and consumed by schema to customize the output binary with additional input options
+```::<schema_custom_param>``` - special syntax created by developer and consumed by schema to customize the output with additional input options
 
 1) Command:
 
@@ -22,7 +22,7 @@
 ```sh
   const args = ["-schema", "express", "::type", "basic"];
 ```
-3) WHERE The args relates in the next ways, creating key-value pairs:
+3) WHERE The args relates in the next ways, creating key-value tuples:
 ```sh
   const args = [["-schema", "express"], ["::type", "basic"]];
 ```

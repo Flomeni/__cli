@@ -1,5 +1,5 @@
 {
     "$id": "Express",
     "$type": "Schema",
-    "executor": "./ExpressSchema.ts"
+    "factory": "./index.ts"
 }
