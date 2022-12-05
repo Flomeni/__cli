@@ -1,4 +1,4 @@
-import { SchemaFactory } from "../models/ISchemaFactory";
+import { SchemaFactory } from "../models/IBlueprintFactory";
 
 export class ExpressFactory implements SchemaFactory {
     execute(..._args: any[]) {

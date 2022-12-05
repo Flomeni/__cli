@@ -1,7 +1,7 @@
 # Parsers
 
 ### Static parser
-            
+         
 | 1  Parser.parse(args) |---IKeyValue[]--->| 2  ArgsAnalyzer.analyze(IKeyValue[]) |----IParsedSchema-->| 3 Executor.execute(schema) |-----Resulting Files------> END
 
 ### Dynamic parser
@@ -16,7 +16,7 @@
 1) Command:
 
 ```sh
-  nodebp -schema "express" ::type "basic"
+  nbp -schema "express" ::type "basic"
 ```
 2) Nodejs converts command into an args array string[]:
 ```sh
@@ -54,7 +54,7 @@
 
 1) Command:
 ```sh
-    nodebp --s "./custom_schemas_dir/angular_webserver.json"
+    nbp --s "./custom_schemas_dir/angular_webserver.json"
 ```
 2) Nodejs converts command into an args array string[]:
 ```sh
